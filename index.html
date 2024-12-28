@@ -1,86 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chorale Cant'Océa - Alti</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      text-align: center;
-    }
-    #access-form, #audio-list {
-      display: none;
-    }
-    button {
-      padding: 10px 20px;
-      margin-top: 10px;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin: 10px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Altesses de Cant'Océa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #content {
+            display: none;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+    </style>
+    <script defer src="script.js"></script>
 </head>
 <body>
-  <h1>Chorale Cant'Océa - Alti</h1>
-  <p>Veuillez entrer le code d'accès pour consulter les fichiers audio.</p>
+    <h1>Les Altesses de Cant'Océa</h1>
+    <p>Cette page est réservée aux membres autorisés.</p>
+    <label for="code">Entrez le code secret :</label>
+    <input type="password" id="code" placeholder="Code secret">
+    <button id="validate">Valider</button>
 
-  <div id="login-form">
-    <input type="password" id="access-code" placeholder="Code d'accès" required>
-    <button onclick="validateCode()">Valider</button>
-    <p id="error-message" style="color: red; display: none;">Code incorrect.</p>
-  </div>
-
-  <div id="audio-list">
-    <h2>Fichiers audio</h2>
-    <ul id="files"></ul>
-  </div>
-
-  <script>
-    const correctCode = 1234; // Remplacez par votre code
-    const folderId = 1zBaK9wbAKv8ZRSHpz0N6hoyhDU4l9vYQ; // ID du dossier Google Drive
-
-    function validateCode() {
-      const inputCode = document.getElementById("access-code").value;
-      if (inputCode === correctCode) {
-        document.getElementById("login-form").style.display = "none";
-        document.getElementById("audio-list").style.display = "block";
-        fetchFiles();
-      } else {
-        document.getElementById("error-message").style.display = "block";
-      }
-    }
-
-    async function fetchFiles() {
-      const apiKey = AIzaSyCyL7Iv519prVIDXmWAWaR2t5GHFrK-oDk; // Remplacez par votre clé API
-      const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}`;
-
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        const filesList = document.getElementById("files");
-
-        data.files.forEach(file => {
-          const li = document.createElement("li");
-          li.innerHTML = `
-            ${file.name} 
-            <audio controls>
-              <source src="https://drive.google.com/uc?export=download&id=${file.id}" type="audio/mpeg">
-            </audio>
-            <br>
-            <a href="https://drive.google.com/uc?export=download&id=${file.id}" download>Télécharger</a>
-          `;
-          filesList.appendChild(li);
-        });
-      } catch (error) {
-        console.error("Erreur lors de la récupération des fichiers :", error);
-      }
-    }
-  </script>
+    <div id="content">
+        <h2>Bienvenue !</h2>
+        <p>Voici les fichiers audio disponibles :</p>
+        <ul id="audio-list"></ul>
+    </div>
 </body>
 </html>
