@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const authorizedCode =1234; // Changez ceci pour le code secret
+    const authorizedCode ="1234"; // Changez ceci pour le code secret
     const validateButton = document.getElementById('validate');
     const contentDiv = document.getElementById('content');
     const audioList = document.getElementById('audio-list');
