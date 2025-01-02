@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Clé API et identifiant du dossier Google Drive
     const API_KEY = AIzaSyCyL7Iv519prVIDXmWAWaR2t5GHFrK-oDk; // Remplacez par votre clé API
-    const FOLDER_ID = 1zBaK9wbAKv8ZRSHpz0N6hoyhDU4l9vYQ; // Remplacez par l'ID du dossier partagé
+    const FOLDER_ID = "1zBaK9wbAKv8ZRSHpz0N6hoyhDU4l9vYQ" ; // Remplacez par l'ID du dossier partagé
 
     validateButton.addEventListener('click', function() {
         const userCode = document.getElementById('code').value;
